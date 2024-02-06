@@ -11,6 +11,10 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+hr {
+    @apply border-neutral-700 my-3;
+}
+
 h1, h2, h3, h4, h5, h6 {
     @apply mb-2 text-sky-300 text-opacity-95 font-medium leading-snug sm:leading-normal tracking-wide;
 }
@@ -47,3 +51,14 @@ article p {
     @apply leading-[32.3px] sm:leading-[43px];
     margin-block-end: 1em;
 }
+
+/* code blocks */
+
+.highlight {
+    @apply mt-4 mb-8 text-[14px] text-black leading-normal;
+}
+
+.highlight pre {
+    @apply p-2 overflow-scroll;
+}
+
