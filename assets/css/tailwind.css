@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    @apply bg-neutral-900 text-neutral-100 text-[18px] sm:text-[24px];
+}
+
+body {
+    @apply bg-[#1F1821];
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    @apply mb-2 text-sky-300 text-opacity-95 font-medium leading-snug sm:leading-normal tracking-wide;
+}
+
+h1 {
+    @apply text-2xl sm:mt-8 sm:text-3xl;
+}
+
+h2 {
+    @apply mt-8 sm:mt-6 text-xl;
+}
+
+h3 {
+    @apply sm:mt-4 sm:text-lg;
+}
+
+h4 {
+    @apply sm:mt-2 text-base;
+}
+
+h5 {
+    @apply sm:mt-2 text-sm;
+}
+
+h6 {
+    @apply sm:mt-2 text-sm uppercase;
+}
+
+article h2 {
+    @apply sm:text-lg;
+}
+
+article p {
+    @apply leading-[32.3px] sm:leading-[43px];
+    margin-block-end: 1em;
+}

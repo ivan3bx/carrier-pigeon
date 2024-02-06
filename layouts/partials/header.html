@@ -1,2 +1,8 @@
-<h1>{{ site.Title }}</h1>
-{{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+<div class="mb-2 flex justify-between items-center bg-gradient-to-l from-neutral-800 to-[#100a12]">
+    <div class="whitespace-nowrap pl-4 py-4 font-bold tracking-wider">
+        <div>{{ site.Title }}</div>
+    </div>
+    <div class="pr-4">
+        {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+    </div>
+</div>

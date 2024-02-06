@@ -3,6 +3,7 @@ public/
 /exampleSite/resources/
 /exampleSite/.hugo_build.lock
 
+*.lock
 node_modules/
 build/
 
