@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
 	"dev": "tailwindcss -i ./assets/css/tailwind*.css -o ./assets/css/main.css --watch",
-    "build": "tailwindcss -i ./assets/css/tailwind*.css -o ./assets/css/main.css --minify && hugo --minify"
+    "build": "tailwindcss -i ./assets/css/tailwind*.css -o ./assets/css/main.css --minify"
   },
   "author": "",
   "license": "MIT",
