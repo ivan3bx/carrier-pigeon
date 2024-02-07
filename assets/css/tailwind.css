@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 html {
-    @apply bg-[#1F1821] text-neutral-100 text-[18px] sm:text-[24px];
+    @apply bg-[#161521] text-[#CEDFD9] text-[18px] sm:text-[24px];
 }
 
 body {
@@ -23,7 +23,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    @apply text-2xl sm:mt-8 sm:text-3xl;
+    @apply text-3xl sm:mt-8 sm:text-3xl;
 }
 
 h2 {
@@ -71,6 +71,10 @@ article h2 {
 article p {
     @apply leading-[32.3px] sm:leading-[43px];
     margin-block-end: 1em;
+}
+
+article a {
+    @apply text-sky-300/90 underline underline-offset-4 hover:text-sky-300;
 }
 
 /* lists */

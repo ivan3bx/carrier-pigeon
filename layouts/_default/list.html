@@ -1,6 +1,6 @@
 {{ define "main" }}
 <div class="mx-auto max-w-lg px-4 mt-12">
-    <h1 class="font-medium mb-8 text-yellow-400/80">
+    <h1 class="font-medium mb-12 text-yellow-400/80">
         <span class="tracking-wide">#{{ .Title }}</span>
     </h1>
   {{ .Content }}
@@ -10,7 +10,7 @@
     {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
     {{ $dateHuman := .Date | time.Format ":date_long" }}
     <li>
-        <h3 class="leading-snug">
+        <h2 class="leading-snug">
             <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
             <div class="text-gray-500 text-[0.73rem] tracking-tight">
                 <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>

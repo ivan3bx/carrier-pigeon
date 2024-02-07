@@ -4,8 +4,8 @@
     {{ $dateHuman := .Date | time.Format ":date_long" }}
 
     {{ if .Title }}
-    <div class="-mx-2 text-center mb-8">
-        <h1>{{ .Title }}</h1>
+    <div class="-mx-2 text-center mt-16 mb-8">
+        <h1 class="my-0">{{ .Title }}</h1>
         <span class="text-gray-500 text-sm">
             Posted <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
         </span>
