@@ -11,6 +11,10 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+p {
+    @apply sm:leading-7;
+}
+
 hr {
     @apply border-neutral-700 my-3;
 }
@@ -43,6 +47,24 @@ h6 {
     @apply sm:mt-2 text-sm uppercase;
 }
 
+/* images */
+
+figure {
+    @apply p-0.5 rounded-sm bg-black bg-opacity-20 my-4 overflow-hidden;
+}
+
+figure img {
+    @apply block w-full h-auto rounded-sm;
+}
+
+figure figcaption {
+    @apply text-[0.65rem] text-neutral-500 text-opacity-80 text-center py-1;
+}
+
+figure figcaption p {
+    @apply m-1 leading-normal;
+}
+
 article h2 {
     @apply sm:text-lg;
 }
@@ -50,6 +72,30 @@ article h2 {
 article p {
     @apply leading-[32.3px] sm:leading-[43px];
     margin-block-end: 1em;
+}
+
+/* lists */
+ul,ol {
+    @apply my-4 ml-4 pl-4 text-[0.94rem];
+}
+
+ol {
+    @apply list-decimal;
+}
+
+article ul {
+    @apply list-disc;
+}
+
+/* footnotes */
+
+.footnotes ol {
+    @apply mt-4 ml-4 list-decimal text-[0.72rem];
+}
+
+.footnotes ol p {
+    @apply sm:leading-tight;
+    margin-block-end: 0.6rem;
 }
 
 /* code blocks */
@@ -60,5 +106,9 @@ article p {
 
 .highlight pre {
     @apply p-2 overflow-scroll;
+}
+
+code {
+    @apply font-mono bg-yellow-950/20 text-orange-300/90 rounded-sm px-1 text-xs;
 }
 

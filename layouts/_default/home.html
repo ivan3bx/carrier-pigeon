@@ -1,7 +1,39 @@
 {{ define "main" }}
-  {{ .Content }}
-  {{ range site.RegularPages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-    {{ .Summary }}
-  {{ end }}
+{{ .Content }}
+<div class="mx-auto max-w-lg px-4 mt-12">
+    <h1 class="text-center font-medium mb-12 text-yellow-400/80">
+        <span class="tracking-wide">Recent Posts</span>
+        </h2>
+        <ul class="list-none space-y-8">
+            {{ $paginator := .Paginate .Site.RegularPages }}
+            {{ range $paginator.Pages }}
+            {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+            {{ $dateHuman := .Date | time.Format ":date_long" }}
+            <li>
+                <h2 class="leading-snug">
+                    <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+                    <div class="text-gray-500 text-[0.73rem] tracking-tight">
+                        <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+                    </div>
+                </h2>
+                <p>{{ .Summary }}</p>
+            </li>
+            {{ end }}
+        </ul>
+
+        <ul class="pager flex justify-between mt-8">
+            <li class="previous">
+                {{ if $paginator.HasPrev }}
+                <a href="{{ .Paginator.Prev.URL }}">&larr; <span class="hover:border-b border-gray-400">Newer
+                        Posts</span></span></a>
+                {{ end }}
+            </li>
+            {{ if $paginator.HasNext }}
+            <li class="next">
+                <a href="{{ .Paginator.Next.URL }}"><span class="hover:border-b border-gray-400">Older Posts</span>
+                    &rarr;</a>
+            </li>
+            {{ end }}
+        </ul>
+</div>
 {{ end }}

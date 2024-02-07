@@ -12,8 +12,8 @@
     <div class="text-base">
         {{ .Content }}
     </div>
-    <div class="mt-8 mb-4 py-2 border-t border-gray-600 border-opacity-50 text-gray-500 text-sm">
-        <div class="py-2">
+    <div class="mt-8 mb-4 py-2 border-opacity-50 text-gray-500 text-sm">
+        <div class="py-1">
             <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
         </div>
         {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
