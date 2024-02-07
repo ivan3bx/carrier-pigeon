@@ -3,11 +3,10 @@
 @tailwind utilities;
 
 html {
-    @apply bg-neutral-900 text-neutral-100 text-[18px] sm:text-[24px];
+    @apply bg-[#1F1821] text-neutral-100 text-[18px] sm:text-[24px];
 }
 
 body {
-    @apply bg-[#1F1821];
     -webkit-font-smoothing: antialiased;
 }
 
@@ -28,7 +27,7 @@ h1 {
 }
 
 h2 {
-    @apply mt-8 sm:mt-6 text-xl;
+    @apply mt-8 sm:mt-6 text-xl sm:text-2xl;
 }
 
 h3 {
