@@ -104,7 +104,7 @@ article ul {
 /* code blocks */
 
 .highlight {
-    @apply mt-4 mb-8 text-[14px] text-black leading-normal;
+    @apply mt-4 mb-8 text-xs text-black leading-normal;
 }
 
 .highlight pre {
@@ -112,6 +112,6 @@ article ul {
 }
 
 code {
-    @apply font-mono bg-yellow-950/20 text-orange-300/90 rounded-sm px-1 text-xs;
+    @apply font-mono bg-yellow-950/20 text-orange-300/90 rounded-sm px-1 text-[0.68rem];
 }
 
