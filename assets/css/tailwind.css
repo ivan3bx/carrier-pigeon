@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 html {
-    @apply bg-[#161521] text-[#CEDFD9] text-[18px] sm:text-[24px];
+    @apply bg-[#161521] text-[#CEDFD9] text-[18px] sm:text-[24px] leading-6;
 }
 
 body {
@@ -19,7 +19,7 @@ hr {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    @apply mb-2 text-sky-300 text-opacity-95 font-medium leading-snug sm:leading-normal tracking-wide;
+    @apply text-sky-300 text-opacity-95 font-medium leading-snug sm:mt-6 sm:leading-normal tracking-wide;
 }
 
 h1 {
@@ -27,50 +27,51 @@ h1 {
 }
 
 h2 {
-    @apply mt-8 sm:mt-6 text-xl sm:text-2xl;
+    @apply text-xl sm:text-2xl;
 }
 
 h3 {
-    @apply sm:mt-4 sm:text-lg;
+    @apply text-lg;
 }
 
 h4 {
-    @apply sm:mt-2 text-base;
+    @apply text-base;
 }
 
 h5 {
-    @apply sm:mt-2 text-sm;
+    @apply text-sm;
 }
 
 h6 {
-    @apply sm:mt-2 text-sm uppercase;
+    @apply text-sm uppercase;
 }
 
 /* images */
 
 figure {
-    @apply p-0.5 rounded-sm bg-black bg-opacity-20 my-4 overflow-hidden;
+    @apply p-0.5 my-4 overflow-hidden;
 }
 
 figure img {
-    @apply block w-full h-auto rounded-sm;
+    @apply block w-auto h-auto rounded-sm mx-auto;
 }
 
 figure figcaption {
-    @apply text-[0.65rem] text-neutral-500 text-opacity-80 text-center py-1;
+    @apply text-[0.65rem] text-neutral-400 text-opacity-80 text-center py-1;
+}
+
+figure figcaption h4 {
+    @apply mx-8 text-xs mb-0;
 }
 
 figure figcaption p {
     @apply m-1 leading-normal;
 }
 
-article h2 {
-    @apply sm:text-lg;
-}
-
 article p {
     @apply leading-[32.3px] sm:leading-[43px];
-    margin-block-end: 1em;
+    margin-block-start: 0.4em;
+    margin-block-end: 0.8em;
 }
 
 article a {
@@ -79,7 +80,7 @@ article a {
 
 /* lists */
 ul,ol {
-    @apply my-4 ml-4 pl-4 text-[0.94rem];
+    @apply my-2 ml-4 pl-4 text-[0.94rem];
 }
 
 ol {
@@ -90,14 +91,26 @@ article ul {
     @apply list-disc;
 }
 
+article blockquote {
+    @apply border-l-4 border-sky-300/90 pl-4 text-gray-400 text-sm;
+}
+
+blockquote p {
+    @apply leading-normal;
+}
+
 /* footnotes */
 
+a.footnote-ref {
+    @apply px-0.5 no-underline font-medium;
+}
+
 .footnotes ol {
-    @apply mt-4 ml-4 list-decimal text-[0.72rem];
+    @apply mt-4 ml-4 list-decimal text-xs;
 }
 
 .footnotes ol p {
-    @apply sm:leading-tight;
+    @apply leading-normal sm:leading-snug;
     margin-block-end: 0.6rem;
 }
 
@@ -112,6 +125,6 @@ article ul {
 }
 
 code {
-    @apply font-mono bg-yellow-950/20 text-orange-300/90 rounded-sm px-1 text-[0.68rem];
+    @apply font-mono bg-yellow-950/20 text-orange-300/90 rounded-sm px-1 text-[0.72rem];
 }
 
