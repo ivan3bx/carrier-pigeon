@@ -1,0 +1,50 @@
+{{ define "main" }}
+<article class="border border-sky-500/40 bg-sky-950/10 m-2 p-4 lg:m-4 overflow-hidden">
+    <style>
+        #summary,article p {
+            line-height: 1.78rem;
+        }
+        @media screen and (min-width: 640px) {
+            #summary,article p {
+                line-height: 2.3rem;
+            }
+        }
+    </style>
+    <div class="text-sm sm:text-lg flex items-center tracking-wide font-medium justify-between text-yellow-400/70">
+        <div class="italic">
+            <time datetime="{{ .Date.Format " 2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+        </div>
+        <div class="">
+            {{ with .Page }}
+            <a href="{{ .RelPermalink }}" class="text-yellow-400/70 hover:text-yellow-400">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 sm:w-5 sm:h-5">
+                    <path
+                        d="M12.232 4.232a2.5 2.5 0 0 1 3.536 3.536l-1.225 1.224a.75.75 0 0 0 1.061 1.06l1.224-1.224a4 4 0 0 0-5.656-5.656l-3 3a4 4 0 0 0 .225 5.865.75.75 0 0 0 .977-1.138 2.5 2.5 0 0 1-.142-3.667l3-3Z" />
+                    <path
+                        d="M11.603 7.963a.75.75 0 0 0-.977 1.138 2.5 2.5 0 0 1 .142 3.667l-3 3a2.5 2.5 0 0 1-3.536-3.536l1.225-1.224a.75.75 0 0 0-1.061-1.06l-1.224 1.224a4 4 0 1 0 5.656 5.656l3-3a4 4 0 0 0-.225-5.865Z" />
+                </svg>
+            </a>
+            {{ end }}
+        </div>
+    </div>
+    <h1 class="mt-8 sm:leading-none text-3xl sm:text-4xl font-semibold">{{ .Title }}</h1>
+    <div id="summary" class="mt-2 mb-8 text-xl sm:text-2xl leading-relaxed sm:tracking-wide overflow-clip">
+        {{ .Summary }}
+    </div>
+
+    {{- with .GetTerms "tags" }}
+    <div class="mt-4 flex justify-between space-x-2 items-center">
+        <ul class="flex-wrap m-0 p-0 flex">
+            {{- range . }}
+            <li class="my-0.5 mr-2 inline-flex items-center rounded-full bg-blue-950/80 px-2 sm:px-4 py-1 text-[0.72rem] leading-snug sm:text-xs font-light tracking-wide text-blue-300/80 ring-1 ring-inset ring-blue-300/20">
+                <a href="{{ .RelPermalink }}" class="no-underline">{{ .LinkTitle }}</a>
+            </li>
+            {{- end }}
+        </ul>
+        <div class="whitespace-nowrap">
+            <a href="{{ $.Site.BaseURL }}" class="text-xs sm:text-base text-sky-300/40 no-underline">{{ $.Site.Title }} </a>
+        </div>
+    </div>
+    {{- end }}
+</article>
+{{ end }}
