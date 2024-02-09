@@ -4,7 +4,7 @@
 * Tailwind CSS
 * Supports the [Unfit for Work](https://unfit-for.work) blog.
 
-# Current State / TODO
+## Current State / TODO
 
 Some additional changes needed before it's ready for general use.
 
@@ -13,7 +13,7 @@ Some additional changes needed before it's ready for general use.
 - Fix analytics (Revert [this commit](https://github.com/ivan3bx/carrier-pigeon/commit/e5a6a0acac81d984710c431c5e8520874faae8b3) and move plausible analytics to site configuration).
 - 404 page
 
-## Demo Site
+## Demo Site 🐦
 
 - https://unfit-for.work
 
