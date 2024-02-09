@@ -19,7 +19,7 @@ hr {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    @apply text-sky-300 text-opacity-95 font-medium leading-snug sm:mt-6 sm:leading-normal tracking-wide;
+    @apply text-sky-300/90 text-opacity-95 font-medium leading-snug sm:mt-6 sm:leading-normal tracking-wide;
 }
 
 h1 {
