@@ -27,24 +27,28 @@
             {{ end }}
         </div>
     </div>
-    <h1 class="mt-8 sm:leading-none text-3xl sm:text-4xl font-semibold">{{ .Title }}</h1>
+    <h1 class="mt-8 sm:leading-none text-3xl sm:text-4xl font-semibold font-['Avenir_Next'] tracking-normal">{{ .Title }}</h1>
     <div id="summary" class="mt-2 mb-8 text-xl sm:text-2xl leading-relaxed sm:tracking-wide overflow-clip">
         {{ .Summary }}
     </div>
 
-    {{- with .GetTerms "tags" }}
     <div class="mt-4 flex justify-between space-x-2 items-center">
-        <ul class="flex-wrap m-0 p-0 flex">
-            {{- range . }}
-            <li class="my-0.5 mr-2 inline-flex items-center rounded-full bg-blue-950/80 px-2 sm:px-4 py-1 text-[0.72rem] leading-snug sm:text-xs font-light tracking-wide text-blue-300/80 ring-1 ring-inset ring-blue-300/20">
-                <a href="{{ .RelPermalink }}" class="no-underline">{{ .LinkTitle }}</a>
-            </li>
-            {{- end }}
-        </ul>
+    {{ if .GetTerms "tags" }}
+        {{- with .GetTerms "tags" }}
+            <ul class="flex-wrap m-0 p-0 flex">
+                {{- range . }}
+                <li class="my-0.5 mr-2 inline-flex items-center rounded-full bg-blue-950/80 px-2 sm:px-4 py-1 text-[0.72rem] leading-snug sm:text-xs font-light tracking-wide text-blue-300/80 ring-1 ring-inset ring-blue-300/20">
+                    <a href="{{ .RelPermalink }}" class="no-underline">{{ .LinkTitle }}</a>
+                </li>
+                {{- end }}
+            </ul>
+        {{- end }}
+    {{ else }}
+    <div class="text-xs sm:text-base text-sky-300/40 no-underline">&nbsp;</div>
+    {{ end }}
         <div class="whitespace-nowrap">
             <a href="{{ $.Site.BaseURL }}" class="text-xs sm:text-base text-sky-300/40 no-underline">{{ $.Site.Title }} </a>
         </div>
     </div>
-    {{- end }}
 </article>
 {{ end }}

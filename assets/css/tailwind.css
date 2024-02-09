@@ -80,7 +80,7 @@ article a {
 
 /* lists */
 ul,ol {
-    @apply my-2 ml-4 pl-4 text-[0.94rem];
+    @apply my-2 ml-4 pl-4;
 }
 
 ol {
