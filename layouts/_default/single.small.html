@@ -1,5 +1,5 @@
 {{ define "main" }}
-<article class="border border-sky-500/40 bg-sky-950/10 m-2 p-4 lg:m-4 overflow-hidden">
+<article class="border-sky-500/40 bg-sky-950/10 px-6 py-8 overflow-hidden">
     <style>
         #summary,article p {
             line-height: 1.78rem;
@@ -27,8 +27,8 @@
             {{ end }}
         </div>
     </div>
-    <h1 class="mt-8 sm:leading-none text-3xl sm:text-4xl font-semibold font-['Avenir_Next'] tracking-normal">{{ .Title }}</h1>
-    <div id="summary" class="mt-2 mb-8 text-xl sm:text-2xl leading-relaxed sm:tracking-wide overflow-clip">
+    <h1 class="mt-8 text-3xl sm:text-4xl font-semibold font-['Avenir_Next'] tracking-normal">{{ .Title }}</h1>
+    <div id="summary" class="mt-4 mb-8 text-2xl leading-relaxed sm:tracking-wide overflow-clip">
         {{ .Summary }}
     </div>
 
@@ -37,7 +37,7 @@
         {{- with .GetTerms "tags" }}
             <ul class="flex-wrap m-0 p-0 flex">
                 {{- range . }}
-                <li class="my-0.5 mr-2 inline-flex items-center rounded-full bg-blue-950/80 px-2 sm:px-4 py-1 text-[0.72rem] leading-snug sm:text-xs font-light tracking-wide text-blue-300/80 ring-1 ring-inset ring-blue-300/20">
+                <li class="my-0.5 mr-2 inline-flex items-center rounded-full bg-blue-950/80 px-2 sm:px-4 py-1 text-[0.76rem] leading-snug font-light tracking-wide text-blue-300/80 ring-1 ring-inset ring-blue-300/20">
                     <a href="{{ .RelPermalink }}" class="no-underline">{{ .LinkTitle }}</a>
                 </li>
                 {{- end }}
