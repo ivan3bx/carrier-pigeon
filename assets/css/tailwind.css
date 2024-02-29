@@ -117,14 +117,14 @@ a.footnote-ref {
 /* code blocks */
 
 .highlight {
-    @apply mt-4 mb-8 text-xs text-black leading-normal;
+    @apply my-6 text-xs text-black leading-normal;
 }
 
 .highlight pre {
-    @apply p-2 overflow-scroll;
+    @apply py-3 px-4 overflow-scroll;
 }
 
 code {
-    @apply font-mono bg-yellow-950/20 text-orange-300/90 rounded-sm px-1 text-[0.72rem];
+    @apply font-mono bg-yellow-950/20 text-orange-300/90 rounded-sm text-[0.70rem];
 }
 
