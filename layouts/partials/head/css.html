@@ -1,4 +1,6 @@
-{{- with resources.Get "css/main.css" }}
+{{- $pico := resources.Get "css/pico.css" }}
+{{- $custom := resources.Get "css/theme.css" }}
+{{- with (slice $pico $custom | resources.Concat "css/bundle.css") }}
   {{- if eq hugo.Environment "development" }}
     <link rel="stylesheet" href="{{ .RelPermalink }}">
   {{- else }}

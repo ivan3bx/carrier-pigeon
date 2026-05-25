@@ -1,10 +1,4 @@
-<div class="mb-2 flex justify-between items-center border-b-2 border-[#006385]">
-    <div class="whitespace-nowrap pl-4 sm:text-lg py-2 font-light tracking-wider">
-        <a href="{{ .Site.BaseURL }}" class="text-neutral-200 border-gray-300 hover:border-b hover:text-neutral-100">
-            {{ .Site.Title }}
-        </a>
-    </div>
-    <div class="pr-4">
-        {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
-    </div>
+<div class="site-header">
+    <a class="brand" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+    {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
 </div>

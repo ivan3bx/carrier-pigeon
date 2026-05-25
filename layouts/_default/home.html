@@ -1,47 +1,36 @@
 {{ define "main" }}
 {{ .Content }}
-<div class="mx-auto max-w-lg px-4 mt-12">
-    <h1 class="text-center font-medium mb-12 text-yellow-400/80">
-        <span class="tracking-wide">writing ≠ thinking</span>
-    </h1>
-    <ul class="pl-0 ml-0 list-none space-y-8">
-        {{ $paginator := .Paginate .Site.RegularPages }}
-        {{ range (where $paginator.Pages "Section" "posts") }}
-        {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
-        {{ $dateHuman := .Date | time.Format ":date_long" }}
-        <li class="group relative">
-            <h2 class="leading-snug">
-                <a href="{{ .RelPermalink }}" class="relative group-hover:text-sky-300">
-                    <div class="absolute top-0 bottom-0 -left-6 group-hover:visible flex items-center invisible group:visible">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                            class="text-yellow-300/80 w-5 h-5">
-                            <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                    {{ .LinkTitle }}
-                </a>
-                <div class="text-gray-500 text-[0.73rem] tracking-tight">
-                    <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
-                </div>
-            </h2>
-            <p>{{ .Summary }}</p>
-        </li>
+<h1 class="tagline"><span>writing ≠ thinking</span></h1>
+<ul class="posts">
+    {{ $paginator := .Paginate .Site.RegularPages }}
+    {{ range (where $paginator.Pages "Section" "posts") }}
+    {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+    {{ $dateHuman := .Date | time.Format ":date_long" }}
+    <li>
+        <h2>
+            <a href="{{ .RelPermalink }}">{{ .LinkTitle }}<svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg></a>
+        </h2>
+        <p class="post-date"><time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time></p>
+        {{ $readMore := printf `<a class="read-more" href="%s">»</a>` .RelPermalink }}
+        {{ if strings.Contains .Summary "</p>" }}
+          {{ (.Summary | replaceRE `</p>\s*$` (printf `%s</p>` $readMore)) | safeHTML }}
+        {{ else }}
+          <p>{{ .Summary | safeHTML }}{{ $readMore | safeHTML }}</p>
         {{ end }}
-    </ul>
+    </li>
+    {{ end }}
+</ul>
 
-    <ul class="pager pl-0 mx-0 flex justify-between mt-8">
-        <li class="previous">
-            {{ if $paginator.HasPrev }}
-            <a href="{{ .Paginator.Prev.URL }}">&larr; <span class="hover:border-b border-gray-400">Newer
-                    Posts</span></span></a>
-            {{ end }}
-        </li>
-        {{ if $paginator.HasNext }}
-        <li class="next">
-            <a href="{{ .Paginator.Next.URL }}"><span class="hover:border-b border-gray-400">Older Posts</span>
-                &rarr;</a>
-        </li>
+<nav class="pager">
+    <span class="previous">
+        {{ if $paginator.HasPrev }}
+        <a href="{{ $paginator.Prev.URL }}">&larr; Newer Posts</a>
         {{ end }}
-    </ul>
-</div>
+    </span>
+    <span class="next">
+        {{ if $paginator.HasNext }}
+        <a href="{{ $paginator.Next.URL }}">Older Posts &rarr;</a>
+        {{ end }}
+    </span>
+</nav>
 {{ end }}
