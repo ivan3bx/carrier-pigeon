@@ -1,0 +1,312 @@
+/* Theme overrides layered on top of Pico.
+   Font stack carried over from Milligram. */
+:root {
+  --pico-font-family-sans-serif: "Roboto", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  --pico-font-family: var(--pico-font-family-sans-serif);
+  /* Base text weight. Headings re-declare this to 700/600 in their own scope,
+     so they stay bold. */
+  --pico-font-weight: 300;
+}
+
+/* Pin root to 16px (Pico otherwise scales up to 20px on wide screens),
+   so body text and rem-based spacing match the Milligram 16px base. */
+html {
+  font-size: 100%;
+}
+
+/* Body text */
+body {
+  font-weight: 300;
+  font-size: 1.1rem;
+}
+
+/* Headings — Milligram type scale at weight 400, normal tracking.
+   Milligram's rem values assume a 10px root; converted here to px against our
+   16px root (e.g. Milligram h1 4.6rem = 46px = 2.875rem here). */
+h1, h2, h3, h4, h5, h6 {
+  --pico-font-weight: 300;
+  --pico-typography-spacing-top: 0; /* Milligram: margin-top: 0 */
+  margin-top: 0;
+  margin-bottom: 1.25rem;           /* Milligram 2.0rem @10px = 20px */
+}
+h1 { --pico-font-size: 2.875rem; --pico-line-height: 1.2; }   /* 46px */
+h2 { --pico-font-size: 2.25rem;  --pico-line-height: 1.25; }  /* 36px */
+h3 { --pico-font-size: 1.75rem;  --pico-line-height: 1.3; }   /* 28px */
+h4 { --pico-font-size: 1.375rem; --pico-line-height: 1.35; } /* 22px */
+h5 { --pico-font-size: 1.125rem; --pico-line-height: 1.5; }  /* 18px */
+h6 { --pico-font-size: 1rem;     --pico-line-height: 1.4; }  /* 16px */
+
+/* Narrow reading column */
+body > main {
+  max-width: 42rem;
+}
+
+/* Site header: brand left, menu right, teal divider */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid #006385;
+}
+.site-header .brand {
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  font-size: 1.1rem;
+  color: var(--pico-color);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.site-header .brand:hover {
+  text-decoration: underline;
+}
+.site-header nav {
+  margin: 0;
+}
+.site-header nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.site-header nav li {
+  list-style: none;
+  padding: 0;
+}
+.site-header > a {
+  font-size: 0.85rem;
+  font-weight: 400;
+  text-decoration: none;
+}
+.site-header a:hover,
+.site-header a.active {
+  text-decoration: underline;
+}
+
+/* Home tagline */
+.tagline {
+  text-align: center;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: rgba(0, 0, 0, 0.7);
+  text-shadow: -2px -0.5px 0 rgba(0, 243, 255, 0.26), 1px 0.5px 0 rgba(252, 252, 42, 0.47);
+  margin: 3rem 0;
+}
+[data-theme="dark"] .tagline {
+  color: rgba(252, 251, 0, 1);
+  text-shadow: -2px -0.5px 0 rgba(1, 100, 108, 0.5), 1px 1px 0 rgba(190, 98, 98, 0.7);
+}
+
+/* Section / tag list title */
+.list-title {
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  margin: 2rem 0;
+}
+
+/* Post list */
+.posts {
+  list-style: none;
+  padding: 0;
+}
+.posts > li {
+  list-style: none;
+  padding-bottom: 3rem;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid var(--pico-muted-border-color);
+}
+.posts > li:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+.posts h2 {
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  margin-bottom: 0.25rem;
+}
+.posts h2 a {
+  color: inherit; /* take the h2's heading/foreground color, not Pico's link blue */
+  text-decoration: none;
+}
+.posts h2 a:hover {
+  color: var(--pico-primary);
+}
+.post-date {
+  color: var(--pico-muted-color);
+  font-size: 0.78rem;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.5rem;
+}
+
+/* Read-more link */
+.read-more {
+  display: inline-block;
+  padding: 0 0.3em;
+  color: var(--pico-muted-color);
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 1.2em;
+  line-height: 1;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+.read-more:hover {
+  color: var(--pico-primary);
+}
+
+/* Hover-reveal chevron next to each title */
+.chevron {
+  width: 0.7em;
+  height: 0.7em;
+  margin-left: 0.3em;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  vertical-align: baseline;
+}
+.posts h2 a:hover .chevron,
+.posts h2 a:focus .chevron {
+  opacity: 1;
+}
+
+/* Prev/next pager */
+.pager {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2.5rem;
+}
+.pager a {
+  text-decoration: none;
+}
+
+/* Blockquote */
+blockquote {
+  padding-top: 0;
+  padding-bottom: 0;
+  border-left-color: color-mix(in srgb, var(--pico-color) 70%, var(--pico-muted-border-color));
+}
+blockquote p:first-child { margin-top: 0; }
+blockquote p:last-child  { margin-bottom: 0; }
+
+/* Single post */
+article {
+  box-shadow: none;
+  background: none;
+  padding-top: 0;
+}
+article h2,
+article h3,
+article h4,
+article h5,
+article h6 {
+  margin-top: 2rem;
+}
+
+.post-footer {
+  background: none;
+}
+
+.post-header {
+  text-align: center;
+  margin: 3rem 0 2.5rem;
+}
+.post-header h1 {
+  --pico-font-weight: 400;
+  letter-spacing: -0.025em;
+  margin-bottom: 0.4rem;
+}
+.post-footer {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--pico-muted-border-color);
+}
+
+/* Tag pills */
+.terms {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--pico-muted-color);
+}
+.terms ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.terms li {
+  list-style: none;
+  padding: 0;
+}
+.terms a {
+  display: inline-block;
+  padding: 0.1rem 0.65rem;
+  border-radius: 1rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid var(--pico-primary);
+  color: var(--pico-primary);
+}
+.terms a:hover {
+  background: var(--pico-primary);
+  color: var(--pico-primary-inverse);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  h1 { --pico-font-size: 2.36rem; }
+  h2 { --pico-font-size: 1.85rem; }
+  h3 { --pico-font-size: 1.44rem; }
+  h4 { --pico-font-size: 1.13rem; }
+  h5 { --pico-font-size: 0.92rem; }
+  h6 { --pico-font-size: 0.82rem; }
+  .post-header h1 {
+    --pico-font-size: 2.35rem;
+    letter-spacing: -0.015em;
+  }
+}
+
+/* Theme toggle */
+.theme-toggle {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0.25rem !important;
+  margin: 0 !important;
+  cursor: pointer;
+  color: var(--pico-muted-color) !important;
+  line-height: 1;
+  flex-shrink: 0;
+  width: auto !important;
+}
+.theme-toggle:focus {
+  color: var(--pico-muted-color) !important;
+  background: none !important;
+}
+.theme-toggle svg {
+  width: 1rem;
+  height: 1rem;
+  display: block;
+}
+.icon-moon { display: none; }
+
+/* Site footer */
+.site-footer {
+  text-align: center;
+  padding: 1rem 0 2rem;
+  font-size: 0.85rem;
+  color: var(--pico-muted-color);
+}

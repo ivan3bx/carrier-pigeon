@@ -16,3 +16,9 @@ $RECYCLE.BIN/
 
 # OSX
 .DS_Store
+.gstack/
+
+# Editor
+.vscode/
+*.swp
+*.swo

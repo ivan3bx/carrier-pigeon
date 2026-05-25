@@ -1,24 +1,21 @@
 {{ define "main" }}
-<div class="mx-auto max-w-lg px-4 mt-12">
-    <h1 class="font-medium mb-12 text-yellow-400/80">
-        <span class="tracking-wide">#{{ .Title }}</span>
-    </h1>
-  {{ .Content }}
+<h1 class="list-title">#{{ .Title }}</h1>
+{{ .Content }}
 
-  <ul class="pl-0 ml-0 list-none space-y-8">
+<ul class="posts">
     {{ range .Pages }}
     {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
     {{ $dateHuman := .Date | time.Format ":date_long" }}
     <li>
-        <h2 class="leading-snug">
-            <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
-            <div class="text-gray-500 text-[0.73rem] tracking-tight">
-                <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
-            </div>
-        </h3>
-        <p class="text-sm">{{ .Summary }}</p>
+        <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+        <p class="post-date"><time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time></p>
+        {{ $readMore := printf `<a class="read-more" href="%s">»</a>` .RelPermalink }}
+        {{ if strings.Contains .Summary "</p>" }}
+          {{ (.Summary | replaceRE `</p>\s*$` (printf `%s</p>` $readMore)) | safeHTML }}
+        {{ else }}
+          <p>{{ .Summary | safeHTML }}{{ $readMore | safeHTML }}</p>
+        {{ end }}
     </li>
     {{ end }}
 </ul>
-  </div>
 {{ end }}
