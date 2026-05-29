@@ -1,11 +1,12 @@
 /* Theme overrides layered on top of Pico.
-   Font stack carried over from Milligram. */
+   Body/headings set in Spectral, matching the reading typography of
+   https://www.owenmcgrann.com/p/the-dead-economy-theory */
 :root {
-  --pico-font-family-sans-serif: "Roboto", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  --pico-font-family: var(--pico-font-family-sans-serif);
-  /* Base text weight. Headings re-declare this to 700/600 in their own scope,
-     so they stay bold. */
-  --pico-font-weight: 300;
+  --pico-font-family-serif: "Spectral", "Georgia", "Cambria", "Times New Roman", "Times", serif;
+  --pico-font-family: var(--pico-font-family-serif);
+  /* Base text weight. Spectral reads best at 400 for body copy; headings
+     re-declare their own weight below. */
+  --pico-font-weight: 400;
 }
 
 /* Pin root to 16px (Pico otherwise scales up to 20px on wide screens),
@@ -14,10 +15,12 @@ html {
   font-size: 100%;
 }
 
-/* Body text */
+/* Body text — Spectral at the reference site's reading size (~20px) with a
+   relaxed line-height suited to the serif. */
 body {
-  font-weight: 300;
-  font-size: 1.1rem;
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1.7;
 }
 
 /* Headings — Milligram type scale at weight 400, normal tracking.
@@ -36,9 +39,10 @@ h4 { --pico-font-size: 1.375rem; --pico-line-height: 1.35; } /* 22px */
 h5 { --pico-font-size: 1.125rem; --pico-line-height: 1.5; }  /* 18px */
 h6 { --pico-font-size: 1rem;     --pico-line-height: 1.4; }  /* 16px */
 
-/* Narrow reading column */
+/* Narrow reading column — tightened from 42rem to give the wider side
+   margins of the reference site. */
 body > main {
-  max-width: 42rem;
+  max-width: 39rem;
 }
 
 /* Site header: brand left, menu right, teal divider */
