@@ -36,9 +36,37 @@ h4 { --pico-font-size: 1.375rem; --pico-line-height: 1.35; } /* 22px */
 h5 { --pico-font-size: 1.125rem; --pico-line-height: 1.5; }  /* 18px */
 h6 { --pico-font-size: 1rem;     --pico-line-height: 1.4; }  /* 16px */
 
-/* Narrow reading column */
+/* Page gutter: breathing room between content and the screen edge.
+   Pico drops horizontal padding above 576px, which left text flush against
+   the edge on mid-width phones (e.g. foldables). max() keeps content clear
+   of rounded corners / notch via safe-area insets (viewport-fit=cover). */
+:root {
+  --page-gutter: 1.5rem;
+  --page-gutter-left: max(var(--page-gutter), env(safe-area-inset-left));
+  --page-gutter-right: max(var(--page-gutter), env(safe-area-inset-right));
+}
+
+/* Narrow reading column (42rem of text, plus the gutter) */
 body > main {
-  max-width: 42rem;
+  max-width: calc(42rem + 2 * var(--page-gutter));
+  padding-left: var(--page-gutter-left);
+  padding-right: var(--page-gutter-right);
+}
+
+/* On phones / small tablets, header and footer share the main column so
+   the brand, divider and text all line up on the same edges. */
+@media (max-width: 767.98px) {
+  body > header,
+  body > footer {
+    max-width: calc(42rem + 2 * var(--page-gutter));
+    padding-left: var(--page-gutter-left);
+    padding-right: var(--page-gutter-right);
+  }
+  /* main already provides the gutter; don't double-indent post bodies */
+  body > main > article {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 /* Site header: brand left, menu right, teal divider */
