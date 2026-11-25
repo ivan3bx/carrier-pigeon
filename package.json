@@ -4,12 +4,12 @@
   "description": "blog",
   "main": "index.js",
   "scripts": {
-	"dev": "tailwindcss -i ./assets/css/tailwind*.css -o ./assets/css/main.css --watch",
+    "dev": "tailwindcss -i ./assets/css/tailwind*.css -o ./assets/css/main.css --watch",
     "build": "tailwindcss -i ./assets/css/tailwind*.css -o ./assets/css/main.css --minify"
   },
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "tailwindcss": "^3.4.1"
+    "tailwindcss": "^3.4.19"
   }
 }
